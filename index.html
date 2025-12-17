@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            --glass: rgba(15, 15, 20, 0.9);
+            --card-bg: rgba(0, 0, 0, 0.7);
+            --primary: #ff4081; /* Rosa Neón */
+            --secondary: #00e5ff; /* Azul Cibernético */
+            --gold: #ffd700;
+            --text: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tarjetas Principales */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        h1 { font-size: 2.5rem; color: #fff; text-shadow: 0 0 15px var(--primary); margin-bottom: 20px; }
+        h2 { font-size: 1.5rem; color: var(--secondary); margin-top: 10px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; }
+        
+        p { line-height: 1.6; font-size: 1.05rem; color: #eee; margin-bottom: 15px; }
+        
+        /* GRID DE PERSONAJES */
+        .ow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            align-items: start;
+        }
+
+        .ow-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .ow-card:hover { transform: translateY(-5px); z-index: 10; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+
+        .ow-card img { 
+            width: 100%; 
+            height: 150px; 
+            object-fit: cover; 
+            border-bottom: 2px solid rgba(0,0,0,0.5);
+        }
+
+        .ow-caption {
+            padding: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .she-border { border-top: 3px solid var(--primary); }
+        .he-border { border-top: 3px solid var(--secondary); }
+        
+        .highlight-name { 
+            font-weight: 700; 
+            display: block; 
+            margin-bottom: 5px; 
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* IMÁGENES ESTILO CINE */
+        .wide-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* SECCIÓN MUNDOS */
+        .world-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .world-img { width: 100%; height: 200px; object-fit: cover; object-position: center; }
+        .world-content { padding: 20px; }
+        .world-title { font-family: 'Orbitron', sans-serif; font-weight: bold; color: var(--gold); margin-bottom: 10px; display: block; }
+
+        .genshin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        .genshin-grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
+
+        .btn-container { text-align: center; margin: 40px 0; }
+        button {
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            border: none;
+            padding: 20px 40px;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+            transition: 0.3s;
+        }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 0, 204, 0.8); }
+
+        @media (min-width: 768px) {
+            .world-card { flex-direction: row; align-items: center; }
+            .world-img { width: 40%; height: 250px; }
+            .world-content { width: 60%; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999;"></canvas>
+
+    <div class="container">
+        
+        <div class="card">
+            <h1>Feliz Aniversario ❤️</h1>
+            <p>
+                Me sigue pareciendo increíble que hayamos llegado hasta aquí, otro año más tomados de la mano, como si el tiempo mismo entendiera que <b>tú y yo estamos hechos para permanecer</b>.
+            </p>
+            <p>
+                A veces pienso que es un milagro que sigas amándome, con tu paciencia infinita, con tu luz que incluso mis sombras respetan.
+                Quiero dártelo todo: tu biblioteca soñada, tus flores favoritas, tus días llenos de calma.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 style="color: #ffaa00;">Arthur & Mary</h2>
+            <img src="rdr2.jpg" class="wide-img" alt="Red Dead Redemption">
+            <p>
+                En <b>Red Dead Redemption 2</b>, tú eres mi <b>Mary Linton</b>, esa razón por la que incluso un hombre roto como Arthur encuentra la fuerza para seguir adelante.
+            </p>
+            <p>
+                Y yo soy <b>Arthur Morgan</b>, el hombre que montaría kilómetros enteros solo para volver a verte, que se enfrentaría al mundo entero con tal de protegerte.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 style="color: var(--primary);">Tú eres...</h2>
+            <p>En <b>Overwatch</b>, tú eres cada fuente de vida en mi caos:</p>
+            
+            <div class="ow-grid">
+                <div class="ow-card she-border">
+                    <img src="mercy.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Mercy</span>
+                        Levantándome cuando todo se derrumba.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="kiriko.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Kiriko</span>
+                        Cortando mis maldiciones con tu toque suave.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="brigitte.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Brigitte</span>
+                        Mi escudo contra el mundo.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="lifeweaver.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Lifeweaver</span>
+                        Sanando mis rincones más dañados.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="ana.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Ana</span>
+                        Dándome el nano para ser mi mejor versión.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="illari.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Illari</span>
+                        Iluminando mis días con un sol único.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="mei.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Mei</span>
+                        Calmando mis tormentas con tu abrazo cálido.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="dva.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi D.Va</span>
+                        Enfrentando conmigo lo que venga.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="symmetra.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Symmetra</span>
+                        Construyendo portales para acercarnos.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="widow.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Widow</span>
+                        Tan elegante y letal que el amor es un disparo.
+                    </div>
+                </div>
+
+                <div class="ow-card she-border">
+                    <img src="sombra.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--primary)">Mi Sombra</span>
+                        Conoces mis códigos y aun así no te vas.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="color: var(--secondary);">Yo soy...</h2>
+            
+            <div class="ow-grid">
+                <div class="ow-card he-border">
+                    <img src="genji.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Genji</span>
+                        Que por ti encontró paz y propósito.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="reinhardt.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Reinhardt</span>
+                        Pondré mi escudo sin pensarlo para protegerte.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="soldado.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Soldado</span>
+                        Sigo tu paso aunque todo se complique.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="hanzo.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Hanzo</span>
+                        Disparo flechas solo para mantenerte a salvo.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="torb.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Torbjörn</span>
+                        Reparando cada grieta de nuestra relación.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="zenyatta.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Zenyatta</span>
+                        Encontrando la armonía contigo.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="reaper.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Reaper</span>
+                        Que aun entre sombras siempre vuelve a ti.
+                    </div>
+                </div>
+
+                <div class="ow-card he-border">
+                    <img src="junker.jpg" loading="lazy">
+                    <div class="ow-caption">
+                        <span class="highlight-name" style="color:var(--secondary)">Tu Junker</span>
+                        Luchando en cada arena por ti.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>En todos los universos</h2>
+
+            <div class="world-card">
+                <img src="hollow.jpg" class="world-img" alt="Hollow Knight">
+                <div class="world-content">
+                    <span class="world-title">HOLLOW KNIGHT</span>
+                    <p>Yo soy el caballero hecho de vacío, y tú eres la luz que no me ciega, sino que me guía. Eres mi banco seguro donde descansa mi alma después de cada batalla.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <img src="tlou.jpg" class="world-img" alt="The Last of Us">
+                <div class="world-content">
+                    <span class="world-title">THE LAST OF US</span>
+                    <p>Yo sería Joel cargando a Ellie con todo el mundo incendiándose detrás, porque así te cuido yo: con una devoción que no sabe rendirse.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <img src="zelda.jpg" class="world-img" alt="Zelda">
+                <div class="world-content">
+                    <span class="world-title">THE LEGEND OF ZELDA</span>
+                    <p>Tú eres mi Zelda y yo tu Link, cruzando reinos completos solo para verte sonreír. Abriendo templos dentro de mí que solo tú podías despertar.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <img src="minecraft.jpg" class="world-img" alt="Minecraft">
+                <div class="world-content">
+                    <span class="world-title">MINECRAFT</span>
+                    <p>Eres mi hogar iluminado con antorchas en un mapa infinito, mi respawn seguro después de cada noche oscura, mi cofre lleno de paz.</p>
+                </div>
+            </div>
+
+            <div class="world-card" style="display:block;">
+                <div style="padding: 20px;">
+                    <span class="world-title">GENSHIN IMPACT</span>
+                    <div class="genshin-grid">
+                        <img src="furina.jpg">
+                        <img src="xiao.jpg">
+                        <img src="zhongli.jpg">
+                    </div>
+                    <p>Eres mi Furina, mi drama hermoso, mi motivo para seguir por Teyvat. Y yo sería tu Xiao protegiéndote desde lejos, o tu Zhongli, firme e inquebrantable.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <img src="boulevard.jpg" class="world-img" alt="Boulevard">
+                <div class="world-content">
+                    <span class="world-title">BOULEVARD</span>
+                    <p>Tú eres mi salvación inesperada, la mano que me encontró cuando ya había perdido la esperanza. Eres esa historia suave que llegó para quedarse.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <h1>Te elijo</h1>
+            <p>
+                Te elijo como Arthur elegiría volver por Mary aun sabiendo que dolerá. Te elijo como un jugador que siempre vuelve a su mundo favorito.
+            </p>
+            <p>
+                Quiero que este día sea especial porque tú eres especial. Porque tú eres mi luz, mi respawn, mi buff, mi escudo, mi cura, mi misión principal.
+            </p>
+            
+            <h2 style="color: var(--primary); font-size: 2rem; border:none;">Te amo 3 millones</h2>
+            <p>Mi pingüinita, mi healer eterna.</p>
+            <p>Gracias por elegirme, por amarme, por quedarte.</p>
+            <p><b>Yo te escogería en todos los mundos posibles.</b></p>
+            
+            <div class="btn-container">
+                <button onclick="lanzarConfeti()">PRESIONAR START 🎮</button>
+            </div>
+        </div>
+
+    </div>
+
+    <audio id="musica-fondo" loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function lanzarConfeti() {
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            var random = function(min, max) { return Math.random() * (max - min) + min; }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) { return clearInterval(interval); }
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            setTimeout(() => {
+                alert("❤️ ¡Feliz Aniversario! ❤️");
+            }, 500);
+        }
+
+        // ACTIVAR MÚSICA AL PRIMER CLICK/SCROLL
+        window.addEventListener('click', function() {
+            var audio = document.getElementById("musica-fondo");
+            audio.volume = 0.5;
+            audio.play().catch(function(error) {
+                console.log("Esperando interacción para reproducir música...");
+            });
+        }, { once: true });
+
+        window.addEventListener('scroll', function() {
+            var audio = document.getElementById("musica-fondo");
+            audio.volume = 0.5;
+            audio.play().catch(function(error) {
+                console.log("Esperando interacción para reproducir música...");
+            });
+        }, { once: true });
+    </script>
+</body>
+</html>
